@@ -1,5 +1,5 @@
 # Первое задание
-# гAuthor: Dan Zaytsev
+# Author: Dan Zaytsev
 
 import mcpi.minecraft as minecraft
 import mcpi.block as blocks
@@ -52,7 +52,8 @@ if __name__ == '__main__':
     mc.postToChat("Мои координаты: X - " + str(x) + ", Y - " + str(y) + ", Z - " + str(z))
 
     # Здесь должен быть ваш код
-    # my_block_id: Числовой ID блока, которым будет заполнена яма
+    # my_block_id: Числовой ID блока, которым будет заполнена яма.
+    # Здесь ID 57 - алмазный блок
     my_block_id = 57
     # first_pot_height: в эту переменную нужно присвоить значение 6
     first_pot_height = 6
