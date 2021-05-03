@@ -1,38 +1,25 @@
-# Первое задание
+# Homework 2
 # Author: Dan Zaytsev
 
 import mcpi.minecraft as minecraft
 import mcpi.block as blocks
 
 
-def fill_pot(pot_x, pot_y, pot_z, height, block_id):
-    """
-    Постройка ямы
-    :param pot_x:  точка начала ямы по оси х
-    :param pot_y: точка начала ямы по оси y
-    :param pot_z: точка начала ямы по оси z
-    :param height: глубина ямы
-    :param block_id: ID блока ямы
-    :return:
-    """
-    for current_height in range(height):
-        mc.setBlock(pot_x, pot_y - current_height, pot_z, block_id)
-
-
-def restore_terrain(start_x, start_y, start_z, block_id,
-                    first_pot_height, second_pot_height, third_pot_height, fourth_pot_height, fifth_pot_height,
-                    sixth_pot_height, seventh_pot_height):
+def build_score(start_x, start_y, start_z, *positions):
     """
     Заполнение ямы
     """
 
-    fill_pot(start_x + 1, start_y, start_z, first_pot_height, block_id)
-    fill_pot(start_x + 2, start_y, start_z, second_pot_height, block_id)
-    fill_pot(start_x + 3, start_y, start_z, third_pot_height, block_id)
-    fill_pot(start_x + 4, start_y, start_z, fourth_pot_height, block_id)
-    fill_pot(start_x + 5, start_y, start_z, fifth_pot_height, block_id)
-    fill_pot(start_x + 6, start_y, start_z, sixth_pot_height, block_id)
-    fill_pot(start_x + 7, start_y, start_z, seventh_pot_height, block_id)
+    mc.setBlock(start_x, start_y, start_z + positions[0], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y, start_z + positions[1], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y, start_z + positions[2], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 1, start_z + positions[3], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 2, start_z + positions[4], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 2, start_z + positions[5], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 3, start_z + positions[6], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 4, start_z + positions[7], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 4, start_z + positions[8], blocks.DIAMOND_BLOCK)
+    mc.setBlock(start_x, start_y + 4, start_z + positions[9], blocks.DIAMOND_BLOCK)
 
 
 if __name__ == '__main__':
@@ -40,45 +27,41 @@ if __name__ == '__main__':
     # Получение текущих координат игрока
     player_x, player_y, player_z = mc.player.getPos()
     # Точка размещения блока
-    block_x, block_y, block_z = player_x + 3, player_y - 1, player_z
-    # Установка блока возле игрока
-    mc.setBlock(block_x, block_y, block_z, blocks.DIAMOND_BLOCK)
+    block_x, block_y, block_z = player_x + 3, player_y, player_z
 
-    text_message = "Глубина этой ямы - 14 блоков"
-    my_float_value = 8.65
+    who_am_i = "Я студент Слёрм!"
+    """ В переменную position_1 нужно присвоить количество вопросительных знаков в уже заготовленной строке 
+    who_am_i. Подсчитать количество символов в строке позволяет функция строк count. 
+    В качестве аргумента она принимает строку, количество вхождений которой нужно подсчитать."""
+    position_1 = who_am_i.count("?")
+    """В переменную position_2 нужно присвоить длину результата выражения who_am_i[1]"""
+    position_2 = len(who_am_i[1])
+    '''В переменная position_3 формируется следующим образом: из строки who_am_i при помощи среза нужно 
+    извлечь слово "студент"; затем нужной строковой функцией заменить букву т на пустую строку; 
+    после подсчитать длину полученной строки и в переменную position_3 присвоить остаток от деления этой 
+    строки на 3 (Остаток от деления можно получить при помощи оператора %)
+    '''
+    position_3 = len(who_am_i[2:9].replace("т", ""))%3
+    '''Переменная position_4 формируется так: строковым методом нужно сделать все буквы в строке who_am_i 
+    заглавными и подсчитать количество букв Т строковым методом'''
+    position_4 = who_am_i.upper().count("Т")
+    '''В переменной position_5 должен находиться результат следующих действий: при помощи среза извлечь 
+    из строки who_am_i строку Слёрм. Подсчитать её длину и поделить нацело на 2. Поделить нацело (взять целую часть без остатка) можно оператором //'''
+    position_5 = len(who_am_i[-6:-1])//2
+    '''В переменную position_6 нужно присвоить нужно присвоить количество восклицательных знаков в строке who_am_i'''
+    position_6 = who_am_i.count("!")
+    '''В переменную position_7 нужно присвоить разность переменной position_5 и константы 2'''
+    position_7 = position_5 - 2
+    '''В переменную position_8 нужно присвоить приведенный к числу результат строкового метода 
+    islower(), примененного к строке who_am_i. Этот строковый метод проверяет все ли буквы в строке 
+    прописные (маленькие) и возвращает логический (булев) тип.'''
+    position_8 = int(who_am_i.islower())
+    '''В переменную position_9 нужно присвоить количество букв л в строке who_am_i'''
+    position_9 = who_am_i.count("л")
+    '''В переменную position_10 нужно присвоить длину полного среза строки who_am_i с шагом 3, деленную на 3'''
+    position_10 = len(who_am_i[::3])//3
 
-    # Выведем текущие координаты для отладки
-    x, y, z = mc.player.getPos()
-    mc.postToChat("Мои координаты: X - " + str(x) + ", Y - " + str(y) + ", Z - " + str(z))
-
-    # Здесь должен быть ваш код
-    # my_block_id: Числовой ID блока, которым будет заполнена яма.
-    # Здесь ID 57 - алмазный блок
-    my_block_id = 57
-    # first_pot_height: в эту переменную нужно присвоить значение 6
-    first_pot_height = 6
-    # second_pot_height: в этой переменной должна быть сумма
-    # переменной first_pot_height и заранее объявленной my_float_value
-    second_pot_height = int(first_pot_height + my_float_value)
-    # third_pot_height: в этой переменной должна быть разность переменной
-    third_pot_height = first_pot_height - 3
-    # fourth_pot_height: в этой переменной должно быть произведение
-    # переменной first_pot_height и числа 4
-    fourth_pot_height = first_pot_height * 4
-    # fifth_pot_height: в этой переменной должно быть произведение
-    # переменной first_pot_height и числа 3
-    fifth_pot_height = first_pot_height * 3
-    # sixth_pot_height: в этой переменной должно быть число извлеченное из строки text_message
-    sixth_pot_height = int(text_message[19] + text_message[20])
-    # sixth_pot_height: в этой переменной должно быть число извлеченное из строки text_message
-    seventh_pot_height = first_pot_height + sixth_pot_height
-
-
-
-
-    # Выкапывание ямы
-    restore_terrain(block_x, block_y, block_z, my_block_id,
-                    first_pot_height, second_pot_height, third_pot_height, fourth_pot_height, fifth_pot_height,
-                    sixth_pot_height, seventh_pot_height)
-
+    build_score(block_x, block_y, block_z,
+                position_1, position_2, position_3, position_4, position_5,
+                position_6, position_7, position_8, position_9, position_10)
 
